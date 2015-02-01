@@ -19,10 +19,10 @@ module.exports = {
   cache: true,
   debug: true,
   devtool: false,
-  entry: [
-      'webpack/hot/only-dev-server',
-      './src/scripts/main.js'
-  ],
+  entry: {
+    main: ['webpack/hot/only-dev-server', './src/scripts/main.js'],
+    vendor: ['react','react-router']
+  },
 
   stats: {
     colors: true,
@@ -61,7 +61,8 @@ module.exports = {
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' })
   ]
 
 };

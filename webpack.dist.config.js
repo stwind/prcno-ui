@@ -18,9 +18,10 @@ module.exports = {
   cache: true,
   debug: false,
   devtool: false,
-  entry: [
-      './src/scripts/main.js'
-  ],
+  entry: {
+    main: './src/scripts/main.js',
+    vendor: ['react','react-router']
+  },
 
   stats: {
     colors: true,
@@ -42,7 +43,7 @@ module.exports = {
     }],
     loaders: [{
       test: /\.js$/,
-      loaders: ['react-hot','jsx?harmony']
+      loader: 'jsx?harmony'
     }, {
       test: /\.scss/,
       loader: "style!css!sass?outputStyle=expanded&" +
@@ -59,6 +60,7 @@ module.exports = {
 
   plugins: [
     new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor' }),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin()

@@ -31,7 +31,7 @@ gulp.task('build', ['clean'], function(cb) {
   runSequence(['webpack', 'copy'], cb);
 });
 
-gulp.task('webpack-dev-server', function (callback) {
+gulp.task('serve', function () {
   var compiler = webpack(webpackConfig),
       host = 'localhost', port = 8080,
       address = 'http://' + host + ':' + port + '/webpack-dev-server/';
