@@ -10,14 +10,15 @@ var WebpackDevServer = require('webpack-dev-server');
 var webpackConfig = require('./webpack.config.js');
 var webpackDistConfig = require('./webpack.dist.config.js');
 
-var DEST = 'dist';                         // The build output folder
+var DEST = 'dist';
 
 gulp.task('clean', require('del').bind(null, [DEST]));
 
-gulp.task('copy', function() {
-  return gulp.src('src/index.html')
-    .pipe(gulp.dest(DEST))
-    .pipe($.size({title: 'copy'}));
+gulp.task('assets', function() {
+  var src = ['src/index.html','src/fonts/*'];
+  return gulp.src(src)
+    .pipe($.copy(DEST, { prefix: 1 }))
+    .pipe($.size({title: 'assets'}));
 });
 
 gulp.task('webpack', function () {
@@ -28,7 +29,7 @@ gulp.task('webpack', function () {
 });
 
 gulp.task('build', ['clean'], function(cb) {
-  runSequence(['webpack', 'copy'], cb);
+  runSequence(['webpack', 'assets'], cb);
 });
 
 gulp.task('serve', function () {
