@@ -10,10 +10,7 @@ var App = React.createClass({
 
   render: function () {
     return (
-      <div>
-        <h1>princeno</h1>
-        <RouteHandler {...this.props}/>
-      </div>
+      <RouteHandler {...this.props}/>
     );
   }
 });

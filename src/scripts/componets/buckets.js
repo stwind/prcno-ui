@@ -22,16 +22,19 @@ var Buckets = React.createClass({
 
   render: function () {
     return (
-      <div>
-        <ul>{this.state.buckets.map(this.renderBucket)}</ul>
+      <div className="p-buckets">
+        <div className="p-buckets__content">
+          <div className="p-buckets__logo">princeno</div>
+          <ul className="p-buckets__menu">{this.state.buckets.map(this.renderBucket)}</ul>
+        </div>
       </div>
     );
   },
 
   renderBucket: function (bucket) {
     return (
-      <li key={bucket.name}>
-        <Link to="entries" params={{ id: bucket.name }}>
+      <li key={bucket.name} className="p-buckets__item">
+        <Link className="p-buckets__link" to="entries" params={{ id: bucket.name }}>
           {bucket.name}
         </Link>
       </li>

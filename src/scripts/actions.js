@@ -13,11 +13,9 @@ var methods = {
   buckets: {
     fetch: function () {
       this.dispatch(type.BUCKET.FETCH, [
-        { name: 'b01' },
-        { name: 'b02' },
-        { name: 'b03' },
-        { name: 'b04' },
-        { name: 'b05' }
+        { name: 'news' },
+        { name: 'works' },
+        { name: 'about' }
       ]);
     }
   },
