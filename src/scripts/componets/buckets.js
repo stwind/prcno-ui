@@ -22,9 +22,9 @@ var Buckets = React.createClass({
 
   render: function () {
     return (
-      <div className="p-buckets">
-        <div className="p-buckets__content">
-          <div className="p-buckets__logo">princeno</div>
+      <div className="page p-buckets">
+        <div className="page__content">
+          <div className="c-logo">princeno</div>
           <ul className="p-buckets__menu">{this.state.buckets.map(this.renderBucket)}</ul>
         </div>
       </div>

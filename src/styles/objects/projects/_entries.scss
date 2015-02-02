@@ -1,0 +1,12 @@
+.p-entries__item {
+    line-height: 18px;
+
+    &:before {
+        content: '■';
+        color: #c92e36;
+        margin-right: 4px;
+        display: inline-block;
+        height: 7px;
+        width: 7px;
+    }
+}

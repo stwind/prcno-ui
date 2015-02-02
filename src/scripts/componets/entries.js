@@ -21,15 +21,19 @@ var Entries = React.createClass({
 
   render: function () {
     return (
-      <div>
-        <ul>{this.state.entries.map(this.renderEntry)}</ul>
+      <div className="page p-entries">
+        <div className="page__content">
+          <ul className="p-entries__menu">{this.state.entries.map(this.renderEntry)}</ul>
+        </div>
       </div>
     );
   },
 
   renderEntry: function (entry) {
     return (
-      <li key={entry.name}>{entry.name} - {entry.bucket}</li>
+      <li key={entry.name} className="p-entries__item">
+        {entry.name} - {entry.bucket}
+      </li>
     );
   }
 });
