@@ -25,7 +25,12 @@ var Buckets = React.createClass({
       <div className="page p-buckets">
         <div className="page__content">
           <div className="c-logo">princeno</div>
-          <ul className="p-buckets__menu">{this.state.buckets.map(this.renderBucket)}</ul>
+          <ul className="p-buckets__menu">
+            {this.state.buckets.map(this.renderBucket)}
+            <li key="about" className="p-buckets__item">
+              <Link className="p-buckets__link" to="about">about</Link>
+            </li>
+          </ul>
         </div>
       </div>
     );

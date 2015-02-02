@@ -14,8 +14,7 @@ var methods = {
     fetch: function () {
       this.dispatch(type.BUCKET.FETCH, [
         { name: 'news' },
-        { name: 'works' },
-        { name: 'about' }
+        { name: 'works' }
       ]);
     }
   },
