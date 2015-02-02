@@ -9,6 +9,9 @@ var type = {
   },
   ENTRY: {
     FETCH: 'ENTRY_FETCH'
+  },
+  INFO: {
+    GET: 'INFO_GET'
   }
 };
 
@@ -31,6 +34,19 @@ var methods = {
           var entries = res.body;
 
           self.dispatch(type.ENTRY.FETCH, entries);
+        });
+    }
+  },
+  info: {
+    get: function () {
+      var self = this,
+          url = config.api.url + '/api/entries/' + config.api.aboutId
+
+      request
+        .get(url)
+        .end(function (res){
+          var info = res.body;
+          self.dispatch(type.INFO.GET, info);
         });
     }
   }

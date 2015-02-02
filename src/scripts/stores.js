@@ -41,7 +41,27 @@ var Entries = Fluxxor.createStore({
   }
 });
 
+var Info = Fluxxor.createStore({
+  initialize: function () {
+    this.info = { content: { data: '' } };
+
+    this.bindActions(
+      actions.type.INFO.GET, this.handleInfoGet
+    )
+  },
+
+  getInfo: function () {
+    return this.info;
+  },
+
+  handleInfoGet: function (payload) {
+    this.info = payload;
+    this.emit('change');
+  }
+});
+
 module.exports = {
   buckets: new Buckets(),
-  entries: new Entries()
+  entries: new Entries(),
+  info: new Info()
 };

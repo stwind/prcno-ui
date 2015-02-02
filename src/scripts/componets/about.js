@@ -5,13 +5,26 @@ var React = require('react'),
     Fluxxor = require('fluxxor');
 
 var About = React.createClass({
-  mixins: [Router.State],
+  mixins: [
+    Router.State,
+    Fluxxor.FluxMixin(React),
+    Fluxxor.StoreWatchMixin("info")
+  ],
+
+  componentDidMount: function () {
+    this.getFlux().actions.info.get();
+  },
+
+  getStateFromFlux: function() {
+    var info = this.getFlux().store("info").getInfo();
+    return { info: info };
+  },
 
   render: function () {
     return (
       <div className="page p-about">
         <div className="page__content">
-          nothing
+          {this.state.info.content.data}
         </div>
       </div>
     );
