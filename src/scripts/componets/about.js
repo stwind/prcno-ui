@@ -5,9 +5,7 @@ var React = require('react'),
     Fluxxor = require('fluxxor');
 
 var About = React.createClass({
-  mixins: [
-    Router.State
-  ],
+  mixins: [Router.State],
 
   render: function () {
     return (
