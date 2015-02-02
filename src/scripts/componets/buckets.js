@@ -4,6 +4,8 @@ var React = require('react'),
     Router = require('react-router'),
     Fluxxor = require('fluxxor');
 
+var { Link } = Router;
+
 var Buckets = React.createClass({
   mixins: [
     Fluxxor.FluxMixin(React), 
@@ -12,6 +14,7 @@ var Buckets = React.createClass({
   ],
 
   getStateFromFlux: function() {
+    this.getFlux().actions.buckets.fetch();
     return {
       buckets: this.getFlux().store("buckets").getBuckets()
     };
@@ -27,7 +30,11 @@ var Buckets = React.createClass({
 
   renderBucket: function (bucket) {
     return (
-      <li key={bucket.name}>{bucket.name}</li>
+      <li key={bucket.name}>
+        <Link to="entries" params={{ id: bucket.name }}>
+          {bucket.name}
+        </Link>
+      </li>
     );
   }
 });

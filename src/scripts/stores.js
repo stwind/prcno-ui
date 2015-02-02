@@ -8,7 +8,7 @@ var Buckets = Fluxxor.createStore({
     this.buckets = [];
 
     this.bindActions(
-      actions.type.BUCKET.ADD, this.handleBucketAdd
+      actions.type.BUCKET.FETCH, this.handleBucketFetch
     )
   },
 
@@ -16,13 +16,32 @@ var Buckets = Fluxxor.createStore({
     return this.buckets;
   },
 
-  handleBucketAdd: function (payload) {
-    this.buckets.push(payload);
+  handleBucketFetch: function (payload) {
+    this.buckets = payload;
+    this.emit('change');
+  }
+});
 
+var Entries = Fluxxor.createStore({
+  initialize: function () {
+    this.entries = [];
+
+    this.bindActions(
+      actions.type.ENTRY.FETCH, this.handleEntryFetch
+    )
+  },
+
+  getEntries: function () {
+    return this.entries;
+  },
+
+  handleEntryFetch: function (payload) {
+    this.entries = payload;
     this.emit('change');
   }
 });
 
 module.exports = {
-  buckets: new Buckets()
+  buckets: new Buckets(),
+  entries: new Entries()
 };
