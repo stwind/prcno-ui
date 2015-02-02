@@ -31,4 +31,3 @@ node_modules/
 .tmp
 dist
 doc
-/src/scripts/main.js
