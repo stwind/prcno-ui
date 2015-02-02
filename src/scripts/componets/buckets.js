@@ -13,8 +13,11 @@ var Buckets = React.createClass({
     Router.State
   ],
 
-  getStateFromFlux: function() {
+  componentDidMount: function () {
     this.getFlux().actions.buckets.fetch();
+  },
+
+  getStateFromFlux: function() {
     return {
       buckets: this.getFlux().store("buckets").getBuckets()
     };

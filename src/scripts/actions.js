@@ -1,5 +1,8 @@
 'use strict';
 
+var request = require('superagent');
+var config = require('./config');
+
 var type = {
   BUCKET: {
     FETCH: 'BUCKET_FETCH'
@@ -20,13 +23,15 @@ var methods = {
   },
   entries: {
     fetch: function (bucket) {
-      this.dispatch(type.ENTRY.FETCH, [
-        { name: 'e01', bucket: bucket },
-        { name: 'e02', bucket: bucket },
-        { name: 'e03', bucket: bucket },
-        { name: 'e04', bucket: bucket },
-        { name: 'e05', bucket: bucket }
-      ]);
+      var self = this,
+          url = config.api.url + '/api/entries?bucket=' + bucket;
+      request
+        .get(url)
+        .end(function (res){
+          var entries = res.body;
+
+          self.dispatch(type.ENTRY.FETCH, entries);
+        });
     }
   }
 };

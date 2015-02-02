@@ -20,7 +20,7 @@ module.exports = {
   devtool: false,
   entry: {
     main: './src/scripts/main.js',
-    vendor: ['react','react-router']
+    vendor: ['react','react-router','fluxxor','superagent']
   },
 
   stats: {

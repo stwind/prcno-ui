@@ -11,9 +11,12 @@ var Entries = React.createClass({
     Router.State
   ],
 
-  getStateFromFlux: function() {
+  componentDidMount: function () {
     var bucket = this.getParams().id;
     this.getFlux().actions.entries.fetch(bucket);
+  },
+
+  getStateFromFlux: function() {
     return {
       entries: this.getFlux().store("entries").getEntries()
     };
@@ -31,8 +34,8 @@ var Entries = React.createClass({
 
   renderEntry: function (entry) {
     return (
-      <li key={entry.name} className="p-entries__item">
-        {entry.name} - {entry.bucket}
+      <li key={entry.id} className="p-entries__item">
+        {entry.title}
       </li>
     );
   }
