@@ -11,6 +11,10 @@ var Entries = React.createClass({
     Router.State
   ],
 
+  componentWillMount: function() {
+    this.state.entries = [];
+  },
+
   componentDidMount: function () {
     var bucket = this.getParams().id;
     this.getFlux().actions.entries.fetch(bucket);
